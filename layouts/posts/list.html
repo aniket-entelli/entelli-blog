@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <section class="hero slim">
+    <div class="container hero-inner">
+      <h1>All Articles</h1>
+      <p>Browse our latest writing and research.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid">
+        {{ range .Paginator.Pages }}
+        <article class="card">
+          <div class="body">
+            <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="excerpt">{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 160 }}{{ end }}</p>
+            {{ with .Params.tags }}
+            <div class="tags">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+            {{ end }}
+          </div>
+        </article>
+        {{ end }}
+      </div>
+      <div class="center-cta">
+        {{ template "_internal/pagination.html" . }}
+      </div>
+    </div>
+  </section>
+{{ end }}
