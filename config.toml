@@ -1,0 +1,11 @@
+baseURL = "https://aniket-entelli.github.io/entelli-blog/"
+languageCode = "en-us"
+title = "Entelli Blog"
+paginate = 9
+
+[outputs]
+  home = ["HTML","RSS","JSON"]
+
+[params]
+  description = "Insights at the intersection of business strategy and human capital."
+  custom_css = ["css/entelli.css"]
