@@ -1,9 +1,62 @@
-<nav class="nav-flex">
-  <a class="brand" href="https://entelli.lovable.app/">Entelli</a>
-  <div class="spacer"></div>
-  <a href="https://entelli.lovable.app/capabilities">Capabilities</a>
-  <a href="https://entelli.lovable.app/case-studies">Case Studies</a>
-  <a href="https://entelli.lovable.app/about">About</a>
-  <a href="https://entelli.lovable.app/contact">Contact</a>
-  <a class="blog-link" href="https://aniket-entelli.github.io/entelli-blog/">Blog</a>
-</nav>
+<!-- Entelli topbar (fallback/shared) -->
+<header class="entelli-header" aria-label="Primary">
+  <nav class="entelli-nav-container">
+    <div class="entelli-nav-content">
+      <!-- Logo (you have this file at static/Entelli Logo.png) -->
+      <a href="https://entelli.lovable.app/" class="entelli-logo-link" aria-label="Entelli Home">
+        <img
+          src="{{ "Entelli Logo.png" | relURL }}"
+          alt="Entelli"
+          class="entelli-logo"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="entelli-nav-desktop">
+        <a href="https://entelli.lovable.app/capabilities" class="entelli-nav-link">Capabilities</a>
+        <a href="https://entelli.lovable.app/industries" class="entelli-nav-link">Industries</a>
+        <a href="https://entelli.lovable.app/case-studies" class="entelli-nav-link">Case Studies</a>
+        <a href="https://entelli.lovable.app/candidates" class="entelli-nav-link">Candidates</a>
+        <!-- Blog is this site -->
+        <a href="{{ "/" | relURL }}" class="entelli-nav-link active">Blog</a>
+        <a href="https://entelli.lovable.app/about" class="entelli-nav-link">About</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="entelli-cta-desktop">
+        <a href="https://entelli.lovable.app/contact" class="entelli-cta-button">Contact Us</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="entelli-mobile-menu-btn" aria-expanded="false" aria-controls="entelli-menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu (same links) -->
+    <div id="entelli-menu" class="entelli-nav-mobile">
+      <a href="https://entelli.lovable.app/capabilities" class="entelli-nav-link">Capabilities</a>
+      <a href="https://entelli.lovable.app/industries" class="entelli-nav-link">Industries</a>
+      <a href="https://entelli.lovable.app/case-studies" class="entelli-nav-link">Case Studies</a>
+      <a href="https://entelli.lovable.app/candidates" class="entelli-nav-link">Candidates</a>
+      <a href="{{ "/" | relURL }}" class="entelli-nav-link active">Blog</a>
+      <a href="https://entelli.lovable.app/about" class="entelli-nav-link">About</a>
+      <a href="https://entelli.lovable.app/contact" class="entelli-cta-button" style="margin-top:.5rem;">Contact Us</a>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile toggle
+  const btn = document.querySelector('.entelli-mobile-menu-btn');
+  const menu = document.getElementById('entelli-menu');
+  if (btn && menu) {
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      menu.classList.toggle('open');
+    });
+  }
+</script>
