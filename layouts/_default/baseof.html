@@ -14,14 +14,40 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container hdr">
-      <a href="{{ "/" | relURL }}" class="brand">Entelli Blog</a>
-      <nav class="nav">
-        <a href="{{ "/posts/" | relURL }}">Articles</a>
-        <a href="{{ "/index.xml" | relURL }}">RSS</a>
-      </nav>
-    </div>
-  </header>
+  <div class="container hdr" id="nav-mount"></div>
+</header>
+
+<script>
+(async () => {
+  const mount = document.getElementById('nav-mount');
+
+  // 1) Try to load the live website header (decoupled source you’ll add later)
+  const candidates = [
+    // when your main site goes live, host one of these:
+    'https://entelli.com/global-nav.html',
+    'https://www.entelli.com/global-nav.html'
+  ];
+
+  let loaded = false;
+  for (const url of candidates) {
+    try {
+      const res = await fetch(url, { mode: 'cors', cache: 'no-store' });
+      if (res.ok) {
+        mount.innerHTML = await res.text();
+        loaded = true;
+        break;
+      }
+    } catch (_) {}
+  }
+
+  // 2) Fallback to local copy (already includes “Blog”)
+  if (!loaded) {
+    const res = await fetch('{{ "nav-fallback.html" | relURL }}', { cache: 'no-store' });
+    mount.innerHTML = await res.text();
+  }
+})();
+</script>
+
 
   <main>
     {{ block "main" . }}{{ end }}
