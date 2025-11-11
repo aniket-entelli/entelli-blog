@@ -14,8 +14,13 @@
 </head>
 <body>
 
-  <!-- Inject full navbar -->
-  {{ readFile "static/nav-fallback.html" | safeHTML }}
+ <body>
+  {{ partial "navbar.html" . }}
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  <footer class="site-footer">{{/* your footer */}}</footer>
+ </body>
 
   <main>
     {{ block "main" . }}{{ end }}
