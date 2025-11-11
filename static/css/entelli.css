@@ -143,3 +143,55 @@ h3{ line-height:1.3; }
   .cta{ display:none; }
   .nav-toggle{ display:inline-flex; }
 }
+
+/* === Entelli Header (matches site) === */
+.entelli-header{
+  position: sticky; top: 0; z-index: 60;
+  background: hsl(var(--paper) / .98);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid hsl(var(--border));
+  box-shadow: 0 10px 30px -20px hsl(210 60% 12% / .15);
+}
+.entelli-nav-container{ max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+.entelli-nav-content{
+  display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 1rem;
+}
+.entelli-logo-link{ display: inline-flex; align-items: center; text-decoration: none; }
+.entelli-logo{ height: 40px; width: auto; display: block; }
+
+.entelli-nav-desktop{ display: none; align-items: center; gap: 1.75rem; }
+@media (min-width: 980px){ .entelli-nav-desktop{ display: flex; } }
+
+.entelli-nav-link{
+  text-decoration: none; color: hsl(var(--ink));
+  font-weight: 700; letter-spacing: -0.01em;
+  padding: .5rem .75rem; border-radius: 10px; transition: .15s ease;
+}
+.entelli-nav-link:hover{ color: hsl(var(--accent)); background: hsl(var(--accent) / .06); }
+.entelli-nav-link.active{ color: hsl(var(--primary)); background: hsl(var(--accent) / .15); }
+
+.entelli-cta-desktop{ display: none; margin-left: auto; }
+@media (min-width: 980px){ .entelli-cta-desktop{ display: block; } }
+
+.entelli-cta-button{
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: .7rem 1.25rem; font-weight: 700; border-radius: 14px;
+  background: linear-gradient(135deg, hsl(205 85% 68%) 0%, hsl(205 85% 60%) 100%);
+  color: #0b2438; text-decoration: none; box-shadow: 0 22px 40px -20px hsl(205 85% 68% / .45);
+  border: 1px solid hsl(205 85% 68% / .6); transition: transform .15s ease, filter .15s ease;
+}
+.entelli-cta-button:hover{ transform: translateY(-1px); filter: brightness(.98); }
+
+/* Mobile */
+.entelli-mobile-menu-btn{ display: inline-flex; background: transparent; border: 0; padding: .4rem; color: hsl(var(--ink)); }
+@media (min-width: 980px){ .entelli-mobile-menu-btn{ display: none; } }
+
+.entelli-nav-mobile{
+  display: none; flex-direction: column; gap: .25rem;
+  padding: .75rem 1.25rem 1rem; border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--paper));
+}
+.entelli-nav-mobile.open{ display: flex; }
+
+/* Keep content from hiding under sticky header when using hash links */
+body{ scroll-padding-top: 76px; }
