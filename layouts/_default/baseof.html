@@ -13,14 +13,10 @@
   {{ end }}
 </head>
 <body>
-  <header class="site-header">
-    <div class="container hdr">
-      <a href="{{ "/" | relURL }}" class="brand">Entelli Blog</a>
-      <nav class="nav">
-        <a href="{{ "/posts/" | relURL }}">Articles</a>
-        <a href="{{ "/index.xml" | relURL }}">RSS</a>
-      </nav>
-    </div>
+
+  <!-- ⬇️ Render the full navbar from static/nav-fallback.html -->
+  <header>
+    {{ readFile "static/nav-fallback.html" | safeHTML }}
   </header>
 
   <main>
@@ -30,5 +26,8 @@
   <footer class="site-footer">
     <div class="container">© {{ now.Year }} Entelli</div>
   </footer>
+
+  <!-- Optional: Later, you can add a JS swapper to replace the fallback
+       with https://entelli.com/global-nav.html when your main site is live. -->
 </body>
 </html>
