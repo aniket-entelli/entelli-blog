@@ -1,1 +1,55 @@
-{{ define "main" }}<h1>Entelli Blog</h1>{{ end }}
+{{ define "main" }}
+  <section class="hero">
+    <div class="container hero-inner">
+      <h1>Insights &amp; Perspectives</h1>
+      <p>Thought leadership on talent strategy, workforce trends, and leadership development.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">View all articles</a>
+      </div>
+    </div>
+  </section>
+
+  {{ $pages := where .Site.RegularPages "Section" "posts" }}
+  {{ $sorted := sort $pages "Date" "desc" }}
+
+  {{ with index $sorted 0 }}
+  <section class="section">
+    <div class="container">
+      <h2>Featured</h2>
+      <article class="card featured">
+        <div class="body">
+          <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+          <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="excerpt">{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 220 }}{{ end }}</p>
+          <div class="btn-row">
+            <a class="btn btn-outline" href="{{ .RelPermalink }}">Read article</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="section subtle">
+    <div class="container">
+      <h2>Latest articles</h2>
+      <div class="grid">
+        {{ range after 1 $sorted | first 9 }}
+        <article class="card">
+          <div class="body">
+            <div class="meta">{{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read</div>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p class="excerpt">{{ with .Params.summary }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 140 }}{{ end }}</p>
+            {{ with .Params.tags }}
+            <div class="tags">{{ range . }}<span class="tag">{{ . }}</span>{{ end }}</div>
+            {{ end }}
+          </div>
+        </article>
+        {{ end }}
+      </div>
+      <div class="center-cta">
+        <a class="btn btn-primary" href="{{ "/posts/" | relURL }}">Browse all</a>
+      </div>
+    </div>
+  </section>
+{{ end }}
