@@ -1,0 +1,47 @@
+<header class="entelli-header" aria-label="Primary">
+  <nav class="entelli-nav-container">
+    <div class="entelli-nav-content">
+      <!-- Logo -->
+      <a href="https://entelli.lovable.app/" class="entelli-logo-link">
+        <img src="{{ "entelli-logo.png" | relURL }}" alt="Entelli" class="entelli-logo" />
+      </a>
+
+      <!-- Desktop nav -->
+      <div class="entelli-nav-desktop">
+        <a href="https://entelli.lovable.app/capabilities" class="entelli-nav-link">Capabilities</a>
+        <a href="https://entelli.lovable.app/industries"   class="entelli-nav-link">Industries</a>
+        <a href="https://entelli.lovable.app/case-studies" class="entelli-nav-link">Case Studies</a>
+        <a href="https://entelli.lovable.app/candidates"   class="entelli-nav-link">Candidates</a>
+        <!-- This site *is* the blog → mark active -->
+        <a href="{{ "/" | relURL }}" class="entelli-nav-link active">Blog</a>
+        <a href="https://entelli.lovable.app/about"        class="entelli-nav-link">About</a>
+      </div>
+
+      <!-- CTA -->
+      <div class="entelli-cta-desktop">
+        <a href="mailto:sales@entelli.com" class="entelli-cta-button">Contact Us</a>
+      </div>
+
+      <!-- Mobile button (simple toggle) -->
+      <button class="entelli-mobile-menu-btn" aria-label="Open menu" onclick="
+        var m=document.getElementById('mobile-nav'); 
+        if(m) m.classList.toggle('open');
+      ">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="entelli-nav-mobile">
+      <a href="https://entelli.lovable.app/capabilities" class="entelli-nav-link">Capabilities</a>
+      <a href="https://entelli.lovable.app/industries"   class="entelli-nav-link">Industries</a>
+      <a href="https://entelli.lovable.app/case-studies" class="entelli-nav-link">Case Studies</a>
+      <a href="https://entelli.lovable.app/candidates"   class="entelli-nav-link">Candidates</a>
+      <a href="{{ "/" | relURL }}"                       class="entelli-nav-link active">Blog</a>
+      <a href="https://entelli.lovable.app/about"        class="entelli-nav-link">About</a>
+      <a href="mailto:sales@entelli.com"                 class="entelli-cta-button" style="margin-top:.5rem;">Contact Us</a>
+    </div>
+  </nav>
+</header>
