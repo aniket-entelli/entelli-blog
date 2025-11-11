@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>{{ if .Title }}{{ .Title }} — {{ end }}{{ .Site.Title }}</title>
   <meta name="description" content="{{ with .Params.summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Entelli CSS (explicit include) -->
+  <link rel="stylesheet" href="{{ "css/entelli.css" | relURL }}">
+
+  <!-- Optional: allow extra CSS via params.custom_css -->
   {{ range .Site.Params.custom_css }}
     <link rel="stylesheet" href="{{ . | relURL }}">
   {{ end }}
 </head>
 <body>
-
- <body>
   {{ partial "navbar.html" . }}
-  <main>
-    {{ block "main" . }}{{ end }}
-  </main>
-  <footer class="site-footer">{{/* your footer */}}</footer>
- </body>
 
   <main>
     {{ block "main" . }}{{ end }}
